@@ -17,6 +17,7 @@ type CreateResponseRequest struct {
 	PreviousResponseID string             `json:"previous_response_id,omitempty"`
 	Reasoning          *ResponseReasoning `json:"reasoning,omitempty"`
 	ServiceTier        string             `json:"service_tier,omitempty"`
+	Text               *ResponseText      `json:"text,omitempty"`
 }
 
 // ResponseReasoning represents reasoning configuration for the Responses API
@@ -25,6 +26,14 @@ type ResponseReasoning struct {
 	GenerateSummary string `json:"generate_summary,omitempty"`
 	Summary         string `json:"summary,omitempty"`
 }
+
+// ResponseText represents response format configuration for the Responses API.
+type ResponseText struct {
+	Format *ResponseTextFormat `json:"format,omitempty"`
+}
+
+// ResponseTextFormat is an alias for ChatCompletionResponseFormat.
+type ResponseTextFormat = ChatCompletionResponseFormat
 
 // CreateResponseResponse represents a response structure for the Responses API.
 type CreateResponseResponse struct {
