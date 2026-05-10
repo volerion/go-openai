@@ -62,29 +62,11 @@ func printPositiveNews(resp openai.CreateResponseResponse) {
 func extractNewsItems(resp openai.CreateResponseResponse) []NewsItem {
 	var items []NewsItem
 	for _, item := range resp.Output {
-		m, ok1 := item.(map[string]any)
-		if !ok1 {
-			continue
-		}
-		content, hasContent := m["content"]
-		if !hasContent {
-			continue
-		}
-		contentList, ok2 := content.([]any)
-		if !ok2 {
-			continue
-		}
-		for _, c := range contentList {
-			cmap, ok3 := c.(map[string]any)
-			if !ok3 {
-				continue
-			}
-			text, _ := cmap["text"].(string)
-			annotations, _ := cmap["annotations"].([]any)
-			title, url := extractTitleAndURL(annotations)
+		for _, c := range item.Content {
+			title, url := extractTitleAndURL(c.Annotations)
 			items = append(items, NewsItem{
 				Title:   title,
-				Summary: text,
+				Summary: c.Text,
 				Source:  url,
 			})
 		}

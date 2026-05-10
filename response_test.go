@@ -67,10 +67,9 @@ func handleResponseEndpoint(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res := openai.CreateResponseResponse{
-		ID:      "resp_" + strconv.Itoa(int(time.Now().Unix())),
-		Created: time.Now().Unix(),
-		Model:   responseReq.Model,
-		Output:  []any{},
+		ID:     "resp_" + strconv.Itoa(int(time.Now().Unix())),
+		Model:  responseReq.Model,
+		Output: []openai.ResponseOutput{},
 	}
 
 	resBytes, _ = json.Marshal(res)
