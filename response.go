@@ -42,6 +42,7 @@ type ResponseInputMessage = ChatCompletionMessage
 type ResponseReasoning struct {
 	Effort          string `json:"effort,omitempty"`
 	GenerateSummary string `json:"generate_summary,omitempty"`
+	Mode            string `json:"mode,omitempty"`
 	Summary         string `json:"summary,omitempty"`
 }
 
