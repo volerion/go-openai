@@ -67,16 +67,17 @@ type ResponseConversationParam struct {
 
 // CreateResponseResponse represents a response structure for the Responses API.
 type CreateResponseResponse struct {
-	ID                 string           `json:"id"`
-	Object             string           `json:"object"`
-	CreatedAt          int64            `json:"created_at"`
-	Model              string           `json:"model"`
-	Output             []ResponseOutput `json:"output"`
-	Usage              *ResponseUsage   `json:"usage,omitempty"`
-	Error              any              `json:"error,omitempty"`
-	PreviousResponseID string           `json:"previous_response_id,omitempty"`
-	IncompleteDetails  any              `json:"incomplete_details,omitempty"`
-	ServiceTier        ServiceTier      `json:"service_tier,omitempty"`
+	ID                 string            `json:"id"`
+	Object             string            `json:"object"`
+	CreatedAt          int64             `json:"created_at"`
+	Model              string            `json:"model"`
+	Output             []ResponseOutput  `json:"output"`
+	Error              any               `json:"error,omitempty"`
+	PreviousResponseID string            `json:"previous_response_id,omitempty"`
+	IncompleteDetails  any               `json:"incomplete_details,omitempty"`
+	Reasoning          ResponseReasoning `json:"reasoning,omitempty"`
+	ServiceTier        ServiceTier       `json:"service_tier,omitempty"`
+	Usage              *ResponseUsage    `json:"usage,omitempty"`
 	httpHeader
 }
 
