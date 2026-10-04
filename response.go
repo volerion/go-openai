@@ -35,8 +35,20 @@ type CreateResponseRequest struct {
 	ParallelToolCalls  bool                        `json:"parallel_tool_calls,omitempty"`
 }
 
-// ResponseInputMessage is an alias for ChatCompletionMessage.
-type ResponseInputMessage = ChatCompletionMessage
+// ResponseInputMessage is message input to the model with a role indicating instruction following hierarchy.
+type ResponseInputMessage struct {
+	Type    string `json:"type,omitempty"`
+	Status  string `json:"status,omitempty"`
+	Role    string `json:"role"`
+	Content any    `json:"content"`
+}
+
+// ResponseInputText represents text input for a Response API request.
+type ResponseInputText struct {
+	Type                  string                 `json:"type"`
+	Text                  string                 `json:"text"`
+	PromptCacheBreakpoint *PromptCacheBreakpoint `json:"prompt_cache_breakpoint,omitempty"`
+}
 
 // ResponseReasoning represents reasoning configuration for the Responses API.
 type ResponseReasoning struct {

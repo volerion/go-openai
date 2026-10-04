@@ -24,3 +24,8 @@ type PromptTokensDetails struct {
 	AudioTokens  int `json:"audio_tokens"`
 	CachedTokens int `json:"cached_tokens"`
 }
+
+// PromptCacheBreakpoint represents prompt cache breakpoint configuration.
+type PromptCacheBreakpoint struct {
+	Mode string `json:"mode"`
+}
