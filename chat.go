@@ -96,7 +96,7 @@ type ChatMessagePart struct {
 
 type ChatCompletionMessage struct {
 	Role         string `json:"role"`
-	Content      string `json:"content,omitempty"`
+	Content      any    `json:"content,omitempty"`
 	Refusal      string `json:"refusal,omitempty"`
 	MultiContent []ChatMessagePart
 
@@ -128,7 +128,7 @@ func (m ChatCompletionMessage) MarshalJSON() ([]byte, error) {
 	if len(m.MultiContent) > 0 {
 		msg := struct {
 			Role             string            `json:"role"`
-			Content          string            `json:"-"`
+			Content          any               `json:"-"`
 			Refusal          string            `json:"refusal,omitempty"`
 			MultiContent     []ChatMessagePart `json:"content,omitempty"`
 			Name             string            `json:"name,omitempty"`
@@ -142,7 +142,7 @@ func (m ChatCompletionMessage) MarshalJSON() ([]byte, error) {
 
 	msg := struct {
 		Role             string            `json:"role"`
-		Content          string            `json:"content,omitempty"`
+		Content          any               `json:"content,omitempty"`
 		Refusal          string            `json:"refusal,omitempty"`
 		MultiContent     []ChatMessagePart `json:"-"`
 		Name             string            `json:"name,omitempty"`
@@ -157,7 +157,7 @@ func (m ChatCompletionMessage) MarshalJSON() ([]byte, error) {
 func (m *ChatCompletionMessage) UnmarshalJSON(bs []byte) error {
 	msg := struct {
 		Role             string `json:"role"`
-		Content          string `json:"content"`
+		Content          any    `json:"content"`
 		Refusal          string `json:"refusal,omitempty"`
 		MultiContent     []ChatMessagePart
 		Name             string        `json:"name,omitempty"`
@@ -173,7 +173,7 @@ func (m *ChatCompletionMessage) UnmarshalJSON(bs []byte) error {
 	}
 	multiMsg := struct {
 		Role             string `json:"role"`
-		Content          string
+		Content          any
 		Refusal          string            `json:"refusal,omitempty"`
 		MultiContent     []ChatMessagePart `json:"content"`
 		Name             string            `json:"name,omitempty"`

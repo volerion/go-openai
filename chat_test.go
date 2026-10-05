@@ -939,7 +939,7 @@ func handleChatCompletionEndpoint(w http.ResponseWriter, r *http.Request) {
 			Index: i,
 		})
 	}
-	inputTokens := numTokens(completionReq.Messages[0].Content) * n
+	inputTokens := numTokens(completionReq.Messages[0].Content.(string)) * n
 	completionTokens := completionReq.MaxTokens * n
 	res.Usage = openai.Usage{
 		PromptTokens:     inputTokens,
@@ -1001,7 +1001,7 @@ func handleDeepseekR1ChatCompletionEndpoint(w http.ResponseWriter, r *http.Reque
 			Index: i,
 		})
 	}
-	inputTokens := numTokens(completionReq.Messages[0].Content) * n
+	inputTokens := numTokens(completionReq.Messages[0].Content.(string)) * n
 	completionTokens := completionReq.MaxTokens * n
 	res.Usage = openai.Usage{
 		PromptTokens:     inputTokens,
