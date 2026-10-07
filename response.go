@@ -33,6 +33,8 @@ type CreateResponseRequest struct {
 	Include            []string                    `json:"include,omitempty"`
 	ContextManagement  []ResponseContextManagement `json:"context_management,omitempty"`
 	ParallelToolCalls  bool                        `json:"parallel_tool_calls,omitempty"`
+	PromptCacheKey     string                      `json:"prompt_cache_key,omitempty"`
+	PromptCacheOptions *PromptCacheOptions         `json:"prompt_cache_options,omitempty"`
 }
 
 // ResponseInputMessage is message input to the model with a role indicating instruction following hierarchy.

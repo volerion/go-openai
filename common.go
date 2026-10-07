@@ -29,3 +29,11 @@ type PromptTokensDetails struct {
 type PromptCacheBreakpoint struct {
 	Mode string `json:"mode"`
 }
+
+// PromptCacheOptions represents options for prompt caching.
+type PromptCacheOptions struct {
+	ComparisonResponseID string `json:"comparison_response_id,omitempty"`
+	Mode                 string `json:"mode,omitempty"`
+	Prewarm              bool   `json:"prewarm,omitempty"`
+	TTL                  string `json:"ttl,omitempty"`
+}
