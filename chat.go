@@ -331,6 +331,10 @@ type ChatCompletionRequest struct {
 	// We recommend hashing their username or email address, in order to avoid sending us any identifying information.
 	// https://platform.openai.com/docs/api-reference/chat/create#chat_create-safety_identifier
 	SafetyIdentifier string `json:"safety_identifier,omitempty"`
+
+	PromptCacheKey     string             `json:"prompt_cache_key,omitempty"`
+	PromptCacheOptions PromptCacheOptions `json:"prompt_cache_options,omitempty"`
+
 	// Embedded struct for non-OpenAI extensions
 	ChatCompletionRequestExtensions
 }
